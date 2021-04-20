@@ -18,14 +18,14 @@ export const EXCURSIONES =
         {
         id: 2,
         nombre: 'Punta Escarra',
-        imagen: 'imagenes/puntaEscarra.png',
-        destacado: false,
+        imagen: './imagenes/puntaEscarra.png',
+        destacado: true,
         descripcion: 'Este domingo saldremos a Punta Escarra. Saldremos del Puente de los Peregrinos (Canfranc Pueblo) para subir hasta el refugio libre de Ip. Desde ahí cogeremos un pequeño valle hacia el collado que sube de Izas. El collado queda en la base de la pirámide final de Punta Escarra. A continuación hay una trepada fácil pero expuesta que lleva a la cima. Se puede volver por un camino paralelo al de ida, al otro lado del rio.'    
         },
         {
         id: 3,
         nombre: 'Pala de Ip',
-        imagen: 'imagenes/palaDeIp.png',
+        imagen: './imagenes/palaDeIp.png',
         destacado: false,
         descripcion: 'Este fin de semana subiremos los picos de pala de IP (2779m) y Collarada (2886m). El sábado saldremos a las 8:00 de la mañana desde el antiguo club e iremos hasta Canfranc, de donde saldremos. El sábado subiremos a pala de IP y bajaremos al refugio libre del embalse de IP, superando unos 1600 m de desnivel. El domingo subiremos a Collarada y vuelta a Iruña.'
         }
