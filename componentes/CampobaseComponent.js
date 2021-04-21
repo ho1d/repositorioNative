@@ -5,8 +5,12 @@ import DetalleExcursion from './DetalleExcursionComponent';
 import { View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import Home from './HomeComponent';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+
 
 const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 function CalendarioNavegador() {
   return (
@@ -15,7 +19,7 @@ function CalendarioNavegador() {
       headerMode="screen"
       screenOptions={{
         headerTintColor: '#fff',
-        headerStyle: { backgroundColor: '#015afc' },
+        headerStyle: { backgroundColor: '#5dade2' },
         headerTitleStyle: { color: '#fff' },
       }}
     >
@@ -23,19 +27,55 @@ function CalendarioNavegador() {
         name="Calendario"
         component={Calendario}
         options={{
-          title: 'Calendario Gaztaroa',
+          title: 'Listado excursiones',
         }}
       />
       <Stack.Screen
         name="DetalleExcursion"
         component={DetalleExcursion}
         options={{
-          title: 'Detalle Excursión',
+          title: 'Detalle excursión',
         }}
       />
     </Stack.Navigator>
   );
 }
+function HomeNavegador() {
+  return (
+    <Stack.Navigator
+      initialRouteName="Inicio"
+      headerMode="screen"
+      screenOptions={{
+        headerTintColor: '#fff',
+        headerStyle: { backgroundColor: '#5dade2' },
+        headerTitleStyle: { color: '#fff' },
+      }}
+    >
+      <Stack.Screen
+        name="Inicio"
+        component={Home}
+        options={{
+          title: 'Campo Base',
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function DrawerNavegador() {
+  return (
+    <Drawer.Navigator
+      drawerStyle={{
+        backgroundColor: '#c2d3da',
+      }}
+      initialRouteName="Inicio"
+    >
+      <Drawer.Screen name="Inicio" component={HomeNavegador} />
+      <Drawer.Screen name="Calendario" component={CalendarioNavegador} />
+    </Drawer.Navigator>
+  );
+}
+
 
 class Campobase extends Component {
 
@@ -43,12 +83,12 @@ class Campobase extends Component {
 
     return (
       <NavigationContainer>
-        <View style={{flex:1, paddingTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight }}>
-          <CalendarioNavegador />
+        <View style={{ flex: 1, paddingTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight }}>
+          <DrawerNavegador/>
         </View>
-      </NavigationContainer>   
+      </NavigationContainer>
     );
-}
+  }
 }
 
 export default Campobase;
