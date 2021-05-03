@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Constants from 'expo-constants';
 import Calendario from './CalendarioComponent';
 import DetalleExcursion from './DetalleExcursionComponent';
 import { View, StyleSheet, Image, Text } from 'react-native';
@@ -13,6 +12,25 @@ import { Icon } from 'react-native-elements';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { colorGaztaroaClaro, colorGaztaroaOscuro } from '../comun/comun';
 import { baseUrl } from '../comun/comun';
+import { connect } from 'react-redux';
+import { fetchExcursiones, fetchComentarios, fetchCabeceras, fetchActividades } from '../redux/ActionCreators';
+
+const mapStateToProps = state => {
+  return {
+    excursiones: state.excursiones,
+    comentarios: state.comentarios,
+    cabeceras: state.cabeceras,
+    actividades: state.actividades
+  }
+}
+const mapDispatchToProps = dispatch => ({
+  fetchExcursiones: () => dispatch(fetchExcursiones()),
+  fetchComentarios: () => dispatch(fetchComentarios()),
+  fetchCabeceras: () => dispatch(fetchCabeceras()),
+  fetchActividades: () => dispatch(fetchActividades()),
+})
+
+
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -230,11 +248,19 @@ const styles = StyleSheet.create({
 
 class Campobase extends Component {
 
+  componentDidMount() {
+    this.props.fetchExcursiones();
+    this.props.fetchComentarios();
+    this.props.fetchCabeceras();
+    this.props.fetchActividades();
+  }
+
+
   render() {
 
     return (
       <NavigationContainer>
-        <View style={{ flex: 1, paddingTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight }}>
+        <View style={{ flex: 1}}>
           <DrawerNavegador />
         </View>
       </NavigationContainer>
@@ -242,4 +268,5 @@ class Campobase extends Component {
   }
 }
 
-export default Campobase;
+
+export default connect(mapStateToProps, mapDispatchToProps)(Campobase);
