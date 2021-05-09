@@ -13,10 +13,9 @@ export const ConfigureStore = () => {
             comentarios,
             cabeceras,
             actividades
-            
         }),
-        applyMiddleware(thunk, logger)
+       applyMiddleware(thunk, logger)
     );
+
     return store;
-    
 }

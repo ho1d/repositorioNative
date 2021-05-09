@@ -1,7 +1,6 @@
 import * as ActionTypes from './ActionTypes';
 import { baseUrl } from '../comun/comun';
 
-
 export const fetchComentarios = () => (dispatch) => {
     return fetch(baseUrl + 'comentarios')
     .then(response => {
