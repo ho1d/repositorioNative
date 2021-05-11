@@ -3,6 +3,7 @@ import { Text, ScrollView, View, FlatList, Safe } from 'react-native';
 import { Card, ListItem, Avatar } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { baseUrl } from '../comun/comun';
+import IndicadorActividad from './IndicadorActividadComponent';
 
 const mapStateToProps = state => {
     return {
@@ -41,24 +42,56 @@ class QuienesSomos extends Component {
                     </ListItem.Content>
                 </ListItem>
             );
+        };
+        if (this.props.actividades.isLoading) {
+
+            return (
+
+                <ScrollView>
+
+                    <Historia />
+
+                    <Card title="Actividades y recursos">
+
+                        <IndicadorActividad />
+
+                    </Card>
+
+                </ScrollView>
+
+            );
+
         }
 
-        return (
-            <ScrollView>
-                <Historia />
-                <Card>
-                    <Card.Title>"Actividades y recursos"</Card.Title>
-                    <Card.Divider />
-                    <FlatList
-                        data={this.props.actividades.actividades}
-                        renderItem={renderActividades}
-                        keyExtractor={item => item.id.toString()}
-                    />
 
-                </Card>
 
-            </ScrollView>
-        );
+        else if (this.props.actividades.isLoading) {
+            return (
+                <ScrollView>
+                    <Historia />
+                    <Card title="Actividades y recursos">
+                        <Text>{this.props.excursiones.errMess}</Text>
+                    </Card>
+                </ScrollView>
+            );
+        }
+
+        else {
+            return (
+                <ScrollView>
+                    <Historia />
+                    <Card>
+                        <Card.Title>"Actividades y recursos"</Card.Title>
+                        <Card.Divider />
+                        <FlatList
+                            data={this.props.actividades.actividades}
+                            renderItem={renderActividades}
+                            keyExtractor={item => item.id.toString()}
+                        />
+                    </Card>
+                </ScrollView>
+            );
+        }
     }
 }
 
