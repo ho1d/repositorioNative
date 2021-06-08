@@ -165,7 +165,7 @@ function CustomDrawerContent(props) {
       <SafeAreaView style={styles.container} forceInset={{ top: 'always', horizontal: 'never' }}>
         <View style={styles.drawerHeader}>
           <View style={{ flex: 1 }}>
-            <Image source={require('./imagenes/logo.png')} style={styles.drawerImage} />
+            <Image source={{uri :"https://firebasestorage.googleapis.com/v0/b/appgaztaroadsm.appspot.com/o/imagenes%2Flogo.png?alt=media&token=aa9b884d-3d56-4698-a711-2dad8f61f22e"}} style={styles.drawerImage} />
           </View>
           <View style={{ flex: 2 }}>
             <Text style={styles.drawerHeaderText}> Gaztaroa</Text>
@@ -194,6 +194,13 @@ function ExcursionesFavoritasNavegador({ navigation }) {
         component={ExcursionesFavoritas}
         options={{
           title: 'ExcursionesFavoritas',
+        }}
+      />
+      <Stack.Screen
+        name="DetalleExcursion"
+        component={DetalleExcursion}
+        options={{
+          title: 'Detalle Excursión',
         }}
       />
     </Stack.Navigator>
