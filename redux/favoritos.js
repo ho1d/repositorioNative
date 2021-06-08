@@ -10,8 +10,6 @@ export const favoritos = (state = [], action) => {
         case ActionTypes.BORRAR_FAVORITO:
             return state.filter(fav => fav !== action.payload);
 
-
-
         default:
             return state;
     }

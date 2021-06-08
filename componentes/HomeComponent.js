@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, ScrollView, View } from 'react-native';
 import { Card } from 'react-native-elements';
-import { baseUrl } from '../comun/comun';
+import { baseUrl,  } from '../comun/comun';
 import { connect } from 'react-redux';
 import {IndicadorActividad} from './IndicadorActividadComponent';
 
@@ -34,12 +34,12 @@ function RenderItem(props) {
     else {
 
         const item = props.item;
-
+        const sssss = "https://firebasestorage.googleapis.com/v0/b/appgaztaroadsm.appspot.com/o/imagenes%2Ffederarse.png?alt=media&token=b22d9d00-fe6e-4417-bb51-c5a116fa9152";
         if (item != null) {
             return (
 
                 <Card>
-                    <Card.Image source={{ uri: baseUrl + item.imagen }}>
+                    <Card.Image source={{uri: (item.imagen)}}>
                         <Card.Title style={styles.cardTitleStyle}>{item.nombre}</Card.Title>
                     </Card.Image>
                     <Text style={{ margin: 20 }}>
@@ -53,7 +53,6 @@ function RenderItem(props) {
         }
     }
 }
-
 
 class Home extends Component {
 

@@ -11,11 +11,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, } from '@react-navigation/drawer';
 import { Icon } from 'react-native-elements';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { colorGaztaroaOscuro, colorGaztaroaClaro } from '../comun/comun';
+import { colorGaztaroaOscuro, colorGaztaroaClaro, firebaseConfig } from '../comun/comun';
 import { connect } from 'react-redux';
 import { fetchExcursiones, fetchComentarios, fetchCabeceras, fetchActividades } from '../redux/ActionCreators';
 import PruebaEsfuerzo from './PruebaEsfuerzoComponent';
 import ExcursionesFavoritas from './VistaFavoritos';
+import firebase from 'firebase';
 
 const mapStateToProps = state => {
   return {
@@ -288,7 +289,9 @@ function DrawerNavegador() {
 
 class Campobase extends Component {
 
+  //Inicializo firebase
   componentDidMount() {
+    firebase.initializeApp(firebaseConfig);
     this.props.fetchExcursiones();
     this.props.fetchComentarios();
     this.props.fetchCabeceras();
